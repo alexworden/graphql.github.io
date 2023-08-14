@@ -76,10 +76,12 @@ Arguments can be either required or optional. When an argument is optional, we c
 
 Most types in your schema will just be normal object types, but there are two types that are special within a schema:
 
+TODO: Feedback from a reader who is new to GraphQL: This section needs more verbose explanation as it does not make sense to someone who is not already familiar with the concepts being described here. Are you suggesting below that some 'schema' is being defined or is this some meta reference to an implied 'shema'? If this is something that needs to be defined, I would suggest making the custom defined names and Types to start with "my" to make this obvious. If it's something else (I suspect it is?)... then I recommend providing more explicit and verbose explanation of whatever is being explained here. 
+
 ```graphql
 schema {
-  query: Query
-  mutation: Mutation
+  myQuery: MyQueryType
+  myMutation: MyMutationType
 }
 ```
 
@@ -87,7 +89,7 @@ Every GraphQL service has a `query` type and may or may not have a `mutation` ty
 
 ```graphql
 # { "graphiql": true }
-query {
+myQuery {
   hero {
     name
   }
@@ -100,7 +102,7 @@ query {
 That means that the GraphQL service needs to have a `Query` type with `hero` and `droid` fields:
 
 ```graphql
-type Query {
+type MyQueryType {
   hero(episode: Episode): Character
   droid(id: ID!): Droid
 }
